@@ -628,6 +628,7 @@ async def request_body_to_args(
             received_body = {field.alias: received_body}
 
         for field in required_params:
+
             loc: Tuple[str, ...]
             if field_alias_omitted:
                 loc = ("body",)
@@ -646,6 +647,7 @@ async def request_body_to_args(
                     except AttributeError:
                         errors.append(get_missing_field_error(loc))
                         continue
+
             if (
                 value is None
                 or (isinstance(field_info, params.Form) and value == "")
@@ -655,11 +657,12 @@ async def request_body_to_args(
                     and len(value) == 0
                 )
             ):
-                if field.required:
-                    errors.append(get_missing_field_error(loc))
-                else:
-                    values[field.name] = deepcopy(field.default)
-                continue
+                if ((value == "" or value is None) and field.type_ == int or field.type_ == float) or (value is None and field.type_ == str):
+                    if field.required:
+                        errors.append(get_missing_field_error(loc))
+                    else:
+                        values[field.name] = deepcopy(field.default)
+                    continue
             if (
                 isinstance(field_info, params.File)
                 and lenient_issubclass(field.type_, bytes)
