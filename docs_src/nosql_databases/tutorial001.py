@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional
 
 from couchbase import LOCKMODE_WAIT
 from couchbase.bucket import Bucket
@@ -23,9 +23,9 @@ def get_bucket():
 
 class User(BaseModel):
     username: str
-    email: Union[str, None] = None
-    full_name: Union[str, None] = None
-    disabled: Union[bool, None] = None
+    email: Optional[str] = None
+    full_name: Optional[str] = None
+    disabled: Optional[bool] = None
 
 
 class UserInDB(User):

@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional
 
 from fastapi import FastAPI
 from pydantic import BaseModel, EmailStr
@@ -9,7 +9,7 @@ app = FastAPI()
 class UserBase(BaseModel):
     username: str
     email: EmailStr
-    full_name: Union[str, None] = None
+    full_name: Optional[str] = None
 
 
 class UserIn(UserBase):

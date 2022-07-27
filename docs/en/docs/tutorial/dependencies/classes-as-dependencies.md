@@ -6,17 +6,9 @@ Before diving deeper into the **Dependency Injection** system, let's upgrade the
 
 In the previous example, we were returning a `dict` from our dependency ("dependable"):
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="9"
-    {!> ../../../docs_src/dependencies/tutorial001.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="7"
-    {!> ../../../docs_src/dependencies/tutorial001_py310.py!}
-    ```
+```Python hl_lines="9"
+{!../../../docs_src/dependencies/tutorial001.py!}
+```
 
 But then we get a `dict` in the parameter `commons` of the *path operation function*.
 
@@ -79,53 +71,29 @@ That also applies to callables with no parameters at all. The same as it would b
 
 Then, we can change the dependency "dependable" `common_parameters` from above to the class `CommonQueryParams`:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="11-15"
-    {!> ../../../docs_src/dependencies/tutorial002.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="9-13"
-    {!> ../../../docs_src/dependencies/tutorial002_py310.py!}
-    ```
+```Python hl_lines="11-15"
+{!../../../docs_src/dependencies/tutorial002.py!}
+```
 
 Pay attention to the `__init__` method used to create the instance of the class:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="12"
-    {!> ../../../docs_src/dependencies/tutorial002.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="10"
-    {!> ../../../docs_src/dependencies/tutorial002_py310.py!}
-    ```
+```Python hl_lines="12"
+{!../../../docs_src/dependencies/tutorial002.py!}
+```
 
 ...it has the same parameters as our previous `common_parameters`:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="9"
-    {!> ../../../docs_src/dependencies/tutorial001.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="6"
-    {!> ../../../docs_src/dependencies/tutorial001_py310.py!}
-    ```
+```Python hl_lines="8"
+{!../../../docs_src/dependencies/tutorial001.py!}
+```
 
 Those parameters are what **FastAPI** will use to "solve" the dependency.
 
 In both cases, it will have:
 
-* An optional `q` query parameter that is a `str`.
-* A `skip` query parameter that is an `int`, with a default of `0`.
-* A `limit` query parameter that is an `int`, with a default of `100`.
+* an optional `q` query parameter.
+* a `skip` query parameter, with a default of `0`.
+* a `limit` query parameter, with a default of `100`.
 
 In both cases the data will be converted, validated, documented on the OpenAPI schema, etc.
 
@@ -133,17 +101,9 @@ In both cases the data will be converted, validated, documented on the OpenAPI s
 
 Now you can declare your dependency using this class.
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="19"
-    {!> ../../../docs_src/dependencies/tutorial002.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="17"
-    {!> ../../../docs_src/dependencies/tutorial002_py310.py!}
-    ```
+```Python hl_lines="19"
+{!../../../docs_src/dependencies/tutorial002.py!}
+```
 
 **FastAPI** calls the `CommonQueryParams` class. This creates an "instance" of that class and the instance will be passed as the parameter `commons` to your function.
 
@@ -183,17 +143,9 @@ commons = Depends(CommonQueryParams)
 
 ..as in:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="19"
-    {!> ../../../docs_src/dependencies/tutorial003.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="17"
-    {!> ../../../docs_src/dependencies/tutorial003_py310.py!}
-    ```
+```Python hl_lines="19"
+{!../../../docs_src/dependencies/tutorial003.py!}
+```
 
 But declaring the type is encouraged as that way your editor will know what will be passed as the parameter `commons`, and then it can help you with code completion, type checks, etc:
 
@@ -227,17 +179,9 @@ You declare the dependency as the type of the parameter, and you use `Depends()`
 
 The same example would then look like:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="19"
-    {!> ../../../docs_src/dependencies/tutorial004.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="17"
-    {!> ../../../docs_src/dependencies/tutorial004_py310.py!}
-    ```
+```Python hl_lines="19"
+{!../../../docs_src/dependencies/tutorial004.py!}
+```
 
 ...and **FastAPI** will know what to do.
 

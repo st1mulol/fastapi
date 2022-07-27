@@ -6,17 +6,9 @@ The same way you can declare additional validation and metadata in *path operati
 
 First, you have to import it:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="4"
-    {!> ../../../docs_src/body_fields/tutorial001.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="2"
-    {!> ../../../docs_src/body_fields/tutorial001_py310.py!}
-    ```
+```Python hl_lines="4"
+{!../../../docs_src/body_fields/tutorial001.py!}
+```
 
 !!! warning
     Notice that `Field` is imported directly from `pydantic`, not from `fastapi` as are all the rest (`Query`, `Path`, `Body`, etc).
@@ -25,17 +17,9 @@ First, you have to import it:
 
 You can then use `Field` with model attributes:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="11-14"
-    {!> ../../../docs_src/body_fields/tutorial001.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="9-12"
-    {!> ../../../docs_src/body_fields/tutorial001_py310.py!}
-    ```
+```Python hl_lines="11-14"
+{!../../../docs_src/body_fields/tutorial001.py!}
+```
 
 `Field` works the same way as `Query`, `Path` and `Body`, it has all the same parameters, etc.
 
@@ -56,10 +40,6 @@ You can then use `Field` with model attributes:
 You can declare extra information in `Field`, `Query`, `Body`, etc. And it will be included in the generated JSON Schema.
 
 You will learn more about adding extra information later in the docs, when learning to declare examples.
-
-!!! warning
-    Extra keys passed to `Field` will also be present in the resulting OpenAPI schema for your application.
-    As these keys may not necessarily be part of the OpenAPI specification, some OpenAPI tools, for example [the OpenAPI validator](https://validator.swagger.io/), may not work with your generated schema.
 
 ## Recap
 

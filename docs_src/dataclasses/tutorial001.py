@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Union
+from typing import Optional
 
 from fastapi import FastAPI
 
@@ -8,8 +8,8 @@ from fastapi import FastAPI
 class Item:
     name: str
     price: float
-    description: Union[str, None] = None
-    tax: Union[float, None] = None
+    description: Optional[str] = None
+    tax: Optional[float] = None
 
 
 app = FastAPI()

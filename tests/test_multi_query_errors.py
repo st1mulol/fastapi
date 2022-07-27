@@ -7,7 +7,7 @@ app = FastAPI()
 
 
 @app.get("/items/")
-def read_items(q: List[int] = Query(default=None)):
+def read_items(q: List[int] = Query(None)):
     return {"q": q}
 
 
@@ -63,7 +63,7 @@ openapi_schema = {
                     "loc": {
                         "title": "Location",
                         "type": "array",
-                        "items": {"anyOf": [{"type": "string"}, {"type": "integer"}]},
+                        "items": {"type": "string"},
                     },
                     "msg": {"title": "Message", "type": "string"},
                     "type": {"title": "Error Type", "type": "string"},

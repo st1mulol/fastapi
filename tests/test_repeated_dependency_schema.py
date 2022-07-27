@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 app = FastAPI()
 
 
-def get_header(*, someheader: str = Header()):
+def get_header(*, someheader: str = Header(...)):
     return someheader
 
 
@@ -36,7 +36,7 @@ schema = {
             "ValidationError": {
                 "properties": {
                     "loc": {
-                        "items": {"anyOf": [{"type": "string"}, {"type": "integer"}]},
+                        "items": {"type": "string"},
                         "title": "Location",
                         "type": "array",
                     },

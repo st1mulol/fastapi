@@ -121,7 +121,7 @@ openapi_schema = {
                     "loc": {
                         "title": "Location",
                         "type": "array",
-                        "items": {"anyOf": [{"type": "string"}, {"type": "integer"}]},
+                        "items": {"type": "string"},
                     },
                     "msg": {"title": "Message", "type": "string"},
                     "type": {"title": "Error Type", "type": "string"},

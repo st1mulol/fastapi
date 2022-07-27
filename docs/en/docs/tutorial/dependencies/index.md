@@ -31,17 +31,9 @@ Let's first focus on the dependency.
 
 It is just a function that can take all the same parameters that a *path operation function* can take:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="8-11"
-    {!> ../../../docs_src/dependencies/tutorial001.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="6-7"
-    {!> ../../../docs_src/dependencies/tutorial001_py310.py!}
-    ```
+```Python hl_lines="8-9"
+{!../../../docs_src/dependencies/tutorial001.py!}
+```
 
 That's it.
 
@@ -63,33 +55,17 @@ And then it just returns a `dict` containing those values.
 
 ### Import `Depends`
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="3"
-    {!> ../../../docs_src/dependencies/tutorial001.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="1"
-    {!> ../../../docs_src/dependencies/tutorial001_py310.py!}
-    ```
+```Python hl_lines="3"
+{!../../../docs_src/dependencies/tutorial001.py!}
+```
 
 ### Declare the dependency, in the "dependant"
 
 The same way you use `Body`, `Query`, etc. with your *path operation function* parameters, use `Depends` with a new parameter:
 
-=== "Python 3.6 and above"
-
-    ```Python hl_lines="15  20"
-    {!> ../../../docs_src/dependencies/tutorial001.py!}
-    ```
-
-=== "Python 3.10 and above"
-
-    ```Python hl_lines="11  16"
-    {!> ../../../docs_src/dependencies/tutorial001_py310.py!}
-    ```
+```Python hl_lines="13  18"
+{!../../../docs_src/dependencies/tutorial001.py!}
+```
 
 Although you use `Depends` in the parameters of your function the same way you use `Body`, `Query`, etc, `Depends` works a bit differently.
 

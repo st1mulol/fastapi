@@ -1,5 +1,3 @@
-import warnings
-
 import pytest
 from fastapi import APIRouter, Depends, FastAPI, Response
 from fastapi.responses import JSONResponse
@@ -345,11 +343,7 @@ client = TestClient(app)
 
 def test_openapi():
     client = TestClient(app)
-    with warnings.catch_warnings(record=True) as w:
-        warnings.simplefilter("always")
-        response = client.get("/openapi.json")
-        assert issubclass(w[-1].category, UserWarning)
-        assert "Duplicate Operation ID" in str(w[-1].message)
+    response = client.get("/openapi.json")
     assert response.json() == openapi_schema
 
 
@@ -6612,7 +6606,7 @@ openapi_schema = {
                     "loc": {
                         "title": "Location",
                         "type": "array",
-                        "items": {"anyOf": [{"type": "string"}, {"type": "integer"}]},
+                        "items": {"type": "string"},
                     },
                     "msg": {"title": "Message", "type": "string"},
                     "type": {"title": "Error Type", "type": "string"},

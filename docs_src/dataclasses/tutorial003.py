@@ -1,5 +1,5 @@
 from dataclasses import field  # (1)
-from typing import List, Union
+from typing import List, Optional
 
 from fastapi import FastAPI
 from pydantic.dataclasses import dataclass  # (2)
@@ -8,7 +8,7 @@ from pydantic.dataclasses import dataclass  # (2)
 @dataclass
 class Item:
     name: str
-    description: Union[str, None] = None
+    description: Optional[str] = None
 
 
 @dataclass

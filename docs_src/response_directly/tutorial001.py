@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Union
+from typing import Optional
 
 from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
@@ -10,7 +10,7 @@ from pydantic import BaseModel
 class Item(BaseModel):
     title: str
     timestamp: datetime
-    description: Union[str, None] = None
+    description: Optional[str] = None
 
 
 app = FastAPI()

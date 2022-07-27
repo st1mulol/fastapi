@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional
 
 from fastapi import FastAPI, Path
 from pydantic import BaseModel
@@ -8,17 +8,17 @@ app = FastAPI()
 
 class Item(BaseModel):
     name: str
-    description: Union[str, None] = None
+    description: Optional[str] = None
     price: float
-    tax: Union[float, None] = None
+    tax: Optional[float] = None
 
 
 @app.put("/items/{item_id}")
 async def update_item(
     *,
-    item_id: int = Path(title="The ID of the item to get", ge=0, le=1000),
-    q: Union[str, None] = None,
-    item: Union[Item, None] = None,
+    item_id: int = Path(..., title="The ID of the item to get", ge=0, le=1000),
+    q: Optional[str] = None,
+    item: Optional[Item] = None,
 ):
     results = {"item_id": item_id}
     if q:
